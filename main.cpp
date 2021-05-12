@@ -20,9 +20,9 @@ using namespace std;
 ifstream inputFileStream;    		// Vector of dictionary words read in from file
 const string FILE_NAME = "dictionary.txt"; // not gonna change, probs could just call this in the 'read' function.
 vector<string> dictionary; //dictionary with only words of <lengthOfWordsToUse> length. global because many functions use this
-vector<int> parentVecorIndex;    // vvvv
-vector<string> expandedWordTree; // make this not global?
-vector<int> wordLenCount(30);    // ^^^^
+vector<int> parentVecorIndex;    
+vector<string> expandedWordTree; 
+vector<int> wordLenCount(30);    
 const int SETW_VAL = 4; // global because many functions have a cout << setw(...) statment
 
 //-----------------------------------------------------------------------------------------
@@ -53,18 +53,13 @@ void populateDictionary(int size) // fills the dict with words of set length.
 void displayIdInfo()
 {
     cout << " \n"
-         << "Program #3: Work Play  \n"
-         << "Author: Dale Reed      \n"
-         << "Lab: Tues 8am          \n"
-         << "System:  Codio         \n"
-         << " \n";
-//          << "Program #3: Work Play  \n"
-//          << "Author: Kevin Hogan      \n"
-//          << "Lab: Tues 10am          \n"
-//          << "System:  Codio         \n"
-// 		 << "UIN: 673032668          \n"
-// 		 << "NetId: KHOGAN24          \n"
-         //<< " \n";
+	<< "Program #3: Work Play  \n"
+	<< "Author: Kevin Hogan      \n"
+	<< "Lab: Tues 10am          \n"
+	<< "System:  Codio         \n"
+	<< "UIN: 673032668          \n"
+	<< "NetId: KHOGAN24          \n"
+	<< " \n";
 }//end displayIDInfo()
 
 
@@ -126,7 +121,7 @@ bool checkIfWord(string userWord, vector<string> dictionary)
 
 //-----------------------------------------------------------------------------------------
 // iterates over each value of each word to check if they differ by only one letter
-int offByOneLetter(string word1, string word2) // returns the amount the ywo words vary by. 
+int offByOneLetter(string word1, string word2) // returns the amount the two words vary by. 
 { // assume strings are of the same size !!!
 	int differentLetterCounter = 0;
 	for(int i = 0; i < word1.size(); i++)
@@ -144,6 +139,7 @@ int offByOneLetter(string word1, string word2) // returns the amount the ywo wor
 
 
 //-----------------------------------------------------------------------------------------
+// linear search, for when we are not sorted
 int compareSearch(string wordToSearchFor, vector<string> vectorToSearch)// returns the index, if non is found, -1
 {
 	for(int i = 0; i < vectorToSearch.size(); i++)
@@ -267,8 +263,6 @@ bool playGame(string startWord, string endWord) // DOES NOT CHECK WORD DIFFERENC
 {
 	// pass user input to isValidGues() until it passes all checks
 	// end when user guess is endWord
-	//  DO NOT CHANGE START/END WORD IN MAIN.
-	// NO PASS-BY-REFERENCE
 	string userInput = startWord;
 	int counter = 1;
 	int size = startWord.size();
